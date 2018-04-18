@@ -3,8 +3,8 @@ module Character where
 
     -- Structure - Gender, Dept, Phone Pref, Country, Wears Glasses, Holds Crypto
     -- Gender (M = T, F = F), Dept (CS = T, ECE = F), Phone (Android = T, iPhone = F)
-    data Character = Character { gender :: Bool , dept :: Bool , phone :: Bool , country :: String , glasses :: Bool , cryptocurr :: Bool }
-        deriving Show
+    data Character = Character { name :: String , gender :: Bool , dept :: Bool , phone :: Bool , country :: String , glasses :: Bool , cryptocurr :: Bool }
+        --deriving Show
 
     removingGender :: [Character] -> Bool -> [Character]
     removingGender [] _ = []
@@ -42,5 +42,10 @@ module Character where
         (removingCrypto y b) else
         x : removingCrypto y b
 
-        
+     
+    instance Show Character where 
+        show (Character a b c d e f g) = a ++ ": " ++ (if b == True then "Male, " else "Female, ") 
+            ++ (if c == True then "CS, " else "ECE, ") ++ (if d == True then "Android, " else "iPhone, ") ++
+            "From " ++ e ++ (if f == True then ", Wears Glasses, " else ", Doesn't Wear Glasses, ") ++ 
+            (if g == True then "Owns Crypto$\n" else "Doesn't Own Crypto$\n")
     

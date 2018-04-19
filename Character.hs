@@ -47,5 +47,5 @@ module Character where
         show (Character a b c d e f g) = a ++ ": " ++ (if b == True then "Male, " else "Female, ") 
             ++ (if c == True then "CS, " else "ECE, ") ++ (if d == True then "Android, " else "iPhone, ") ++
             "From " ++ e ++ (if f == True then ", Wears Glasses, " else ", Doesn't Wear Glasses, ") ++ 
-            (if g == True then "Owns Crypto$\n" else "Doesn't Own Crypto$\n")
+            (if g == True then "Owns Crypto$" else "Doesn't Own Crypto$") ++ "\n"
     

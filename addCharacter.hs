@@ -1,13 +1,13 @@
 module AddCharacter where
 
 import Character
+import System.Directory
 
 main :: IO ()
 main = do
   -- Gender (M = T, F = F), Dept (CS = T, ECE = F), Phone (Android = T, iPhone = F)
   putStrLn "\nCreating Character"
-  putStrLn "Please enter the Character's name"
-  nameChar <- getLine
+  nameChar <- checkName "Please enter the Character's name"
   gen <- findGender "Please enter the Character's gender (Male or Female)"
   dep <- findDept "Please enter the Character's departement (CS or ECE)"
   pho <- findPhone "Please enter the Character's phone preference (Android or iPhone)"
@@ -29,8 +29,6 @@ main = do
   writeFile filePath (show inputChar)
   let filePathwithEnd = filePath ++ "\n"
   appendFile "listOfFiles.txt" filePathwithEnd
-
-
 findGender :: String -> IO String
 findGender prompt = do 
   putStrLn prompt
@@ -61,7 +59,7 @@ findPhone prompt = do
     return phone
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Phone"
       findPhone prompt
 
 findGlasses :: String -> IO String
@@ -72,7 +70,7 @@ findGlasses prompt = do
     return glass
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Choice"
       findGlasses prompt
 
 findCrypto :: String -> IO String
@@ -83,5 +81,19 @@ findCrypto prompt = do
     return cry
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Choice"
       findCrypto prompt
+
+checkName :: String -> IO String
+checkName prompt = do
+  putStrLn prompt
+  nm <- getLine
+  let testName = nm ++ ".txt"
+  boolCheck <- doesFileExist testName
+  if (boolCheck) then do
+    putStrLn "That name already exists. Try again"
+    putStrLn (show boolCheck)
+    checkName prompt
+  else 
+    return nm
+  

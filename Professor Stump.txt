@@ -1,0 +1,1 @@
+Character {name = "Professor Stump", gender = True, dept = True, phone = True, country = "USA", glasses = True, cryptocurr = True}

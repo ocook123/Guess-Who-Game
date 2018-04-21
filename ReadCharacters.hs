@@ -14,7 +14,11 @@ readCharacters file = do
     else do
         let linesOfFile = lines contents
         characterList <- readFileChar linesOfFile
+<<<<<<< HEAD:ReadCharacters.hs
         return characterList
+=======
+        putStrLn (printCharList characterList)
+>>>>>>> origin/master:readingCharacters.hs
 
 readFileChar :: [String] -> IO [Character]
 readFileChar [] = return []

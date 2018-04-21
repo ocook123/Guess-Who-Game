@@ -14,7 +14,4 @@ PlayGame.hs - contains all logic for playing the game
 ReadCharacter.hs - reads from file and returns a list of all characters
 addingCharacter.hs - adds character
 listOfFiles.txt - list of paths to character Files
-Kenneth.txt - character file
-Olivia.txt - character file
 Character.hs - character data type
-CharacterInput.txt - some professor's info compiled so far but does not interact with the program

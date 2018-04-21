@@ -4,7 +4,7 @@ module Character where
     -- Structure - Gender, Dept, Phone Pref, Country, Wears Glasses, Holds Crypto
     -- Gender (M = T, F = F), Dept (CS = T, ECE = F), Phone (Android = T, iPhone = F)
     data Character = Character { name :: String , gender :: Bool , dept :: Bool , phone :: Bool , country :: String , glasses :: Bool , cryptocurr :: Bool }
-        --deriving Show
+        deriving (Eq, Show, Read)
 
     removingGender :: [Character] -> Bool -> [Character]
     removingGender [] _ = []
@@ -42,10 +42,15 @@ module Character where
         (removingCrypto y b) else
         x : removingCrypto y b
 
+    printChar :: Character -> String
+    printChar (Character a b c d e f g) = a ++ ": " ++ (if b == True then "Male" else "Female") 
+                ++ ", " ++ (if c == True then "CS, " else "ECE, ") ++ (if d == True then "Android, " else "iPhone, ") ++ 
+                e ++ ", " ++ (if f == True then "Wears Glasses, " else "Doesn't Wear Glasses, ") ++
+                (if g == True then "Owns Crypto$" else "Doesn't Own Crypto$") ++ "\n"
+
      
-    instance Show Character where 
-        show (Character a b c d e f g) = a ++ ": " ++ (if b == True then "Male, " else "Female, ") 
-            ++ (if c == True then "CS, " else "ECE, ") ++ (if d == True then "Android, " else "iPhone, ") ++
-            "From " ++ e ++ (if f == True then ", Wears Glasses, " else ", Doesn't Wear Glasses, ") ++ 
-            (if g == True then "Owns Crypto$" else "Doesn't Own Crypto$") ++ "\n"
-    
+   {-} instance Show Character where 
+        show (Character a b c d e f g) = "(" ++ a ++ "," ++ show b ++ "," ++ show c ++ "," ++ show d ++ "," ++ e ++ "," ++ show f ++ "," ++ show g ++ ")"
+
+    instance Read Character where
+        readsPrec _ value =  (Character a b c d e f g) = "(" ++ a ++ "," ++ read b ++ "," ++ read c ++ "," ++ read d ++ "," ++ e ++ "," ++ read f ++ "," ++ read g ++ ")"-}

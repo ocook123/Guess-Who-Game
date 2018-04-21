@@ -1,0 +1,120 @@
+Character: Professor Stump
+Gender: Male
+Dept: CS
+Phone: 
+Country: USA
+Wears Glasses: Y
+Owns Crypto$: Y
+
+Character: Professor Kruger
+Gender: Male
+Dept: ECE
+Phone: 
+Country: South Africa
+Wears Glasses: Y
+Owns Crypto$: 
+
+Character: Professor Canahuate
+Gender: Female
+Dept: ECE
+Phone: iPhone
+Country: Dominican Republic
+Wears Glasses: N
+Owns Crypto$: 
+
+Character: Professor Beichel
+Gender: Male
+Dept: ECE
+Phone: 
+Country: Austria
+Wears Glasses: Y
+Owns Crypto$: 
+
+Character: Professor Maxted
+Gender: Male
+Dept: ECE
+Phone: 
+Country: USA
+Wears Glasses: N
+Owns Crypto$: 
+
+Character: Professor Sen Gupta
+Gender: Female
+Dept: ECE
+Phone: 
+Country: India
+Wears Glasses: N 
+Owns Crypto$: 
+
+Character: Professor Oliveira
+Gender: Female
+Dept: CS
+Phone: 
+Country: 
+Wears Glasses: Y 
+Owns Crypto$: 
+
+Character: Professor Johnson
+Gender: Male
+Dept: ECE
+Phone: iPhone
+Country: USA
+Wears Glasses: Y
+Owns Crypto$: 
+
+Character: Professor Garvin
+Gender: Female
+Dept: ECE
+Phone: 
+Country: USA
+Wears Glasses: Y 
+Owns Crypto$: 
+
+Character: Professor Casavant
+Gender: Male
+Dept: ECE
+Phone: 
+Country: USA
+Wears Glasses: N 
+Owns Crypto$: 
+
+Character: Professor Kuhl
+Gender: Male
+Dept: ECE
+Phone: 
+Country: USA
+Wears Glasses: Y
+Owns Crypto$: 
+
+Character: Professor Toor
+Gender: Female
+Dept: ECE
+Phone: 
+Country: India
+Wears Glasses: Y 
+Owns Crypto$: 
+
+Character: Professor Wu
+Gender: Male
+Dept: ECE
+Phone: 
+Country: China
+Wears Glasses: Y 
+Owns Crypto$: 
+
+Character: Professor Myers
+Gender: Male
+Dept: CS
+Phone: 
+Country: USA
+Wears Glasses: N
+Owns Crypto$: 
+
+Character: Professor Szecsei
+Gender: Female
+Dept: CS
+Phone: iPhone
+Country: USA
+Wears Glasses: N
+Owns Crypto$: 
+

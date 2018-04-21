@@ -1,11 +1,11 @@
 import Character
+import System.Directory
 
 main :: IO ()
 main = do
   -- Gender (M = T, F = F), Dept (CS = T, ECE = F), Phone (Android = T, iPhone = F)
   putStrLn "\nCreating Character"
-  putStrLn "Please enter the Character's name"
-  nameChar <- getLine
+  nameChar <- checkName "Please enter the Character's name"
   gen <- findGender "Please enter the Character's gender (Male or Female)"
   dep <- findDept "Please enter the Character's departement (CS or ECE)"
   pho <- findPhone "Please enter the Character's phone preference (Android or iPhone)"
@@ -81,3 +81,17 @@ findCrypto prompt = do
     do 
       putStrLn "Error: Invalid Choice"
       findCrypto prompt
+
+checkName :: String -> IO String
+checkName prompt = do
+  putStrLn prompt
+  nm <- getLine
+  let testName = nm ++ ".txt"
+  boolCheck <- doesFileExist testName
+  if (boolCheck) then do
+    putStrLn "That name already exists. Try again"
+    putStrLn (show boolCheck)
+    checkName prompt
+  else 
+    return nm
+  

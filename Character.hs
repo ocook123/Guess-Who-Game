@@ -48,9 +48,6 @@ module Character where
                 e ++ ", " ++ (if f == True then "Wears Glasses, " else "Doesn't Wear Glasses, ") ++
                 (if g == True then "Owns Crypto$" else "Doesn't Own Crypto$") ++ "\n"
 
-     
-   {-} instance Show Character where 
-        show (Character a b c d e f g) = "(" ++ a ++ "," ++ show b ++ "," ++ show c ++ "," ++ show d ++ "," ++ e ++ "," ++ show f ++ "," ++ show g ++ ")"
-
-    instance Read Character where
-        readsPrec _ value =  (Character a b c d e f g) = "(" ++ a ++ "," ++ read b ++ "," ++ read c ++ "," ++ read d ++ "," ++ e ++ "," ++ read f ++ "," ++ read g ++ ")"-}
+    printCharList :: [Character] -> String
+    printCharList [] = []
+    printCharList (char : rest) = printChar char ++ printCharList rest

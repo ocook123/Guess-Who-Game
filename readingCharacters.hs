@@ -12,8 +12,7 @@ main = do
     else do
         let linesOfFile = lines contents
         characterList <- readFileChar linesOfFile
-        putStrLn (printChar (head characterList))
-        putStrLn (printChar (last characterList))
+        putStrLn (printCharList characterList)
 
 readFileChar :: [String] -> IO [Character]
 readFileChar [] = return []

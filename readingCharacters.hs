@@ -5,7 +5,7 @@ import Character
 
 main :: IO ()
 main = do
-    let file = "/Users/oliviacook/MyPLCRepo/ocook/projectTest/listOfFiles.txt"
+    let file = "listOfFiles.txt"
     contents <- readFile file
     if (null contents) then
         putStrLn "File is empty, no characters"

@@ -23,10 +23,10 @@ main = do
   let inputChar = (Character{ name = charname, gender = chargen, dept = chardep, phone = charpho, country = charcout, glasses = charglas, cryptocurr = charcc}) :: Character
   putStrLn (printChar inputChar)
   let fileName = (name inputChar)
-  let filePath = "/Users/oliviacook/MyPLCRepo/ocook/projectTest/" ++ fileName ++ ".txt"
+  let filePath = fileName ++ ".txt"
   writeFile filePath (show inputChar)
   let filePathwithEnd = filePath ++ "\n"
-  appendFile "/Users/oliviacook/MyPLCRepo/ocook/projectTest/listOfFiles.txt" filePathwithEnd
+  appendFile "listOfFiles.txt" filePathwithEnd
 
 
 findGender :: String -> IO String

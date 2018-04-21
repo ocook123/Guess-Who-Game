@@ -1,19 +1,20 @@
+module ReadCharacters where
+
 import System.Environment
 import System.IO.Unsafe
-import Control.Monad.State.Lazy
+import Control.Monad.ST.Lazy
 import Character
 
-main :: IO ()
-main = do
-    let file = "listOfFiles.txt"
+readCharacters :: String -> IO [Character]
+readCharacters file = do
     contents <- readFile file
+    
     if (null contents) then
-        putStrLn "File is empty, no characters"
+        return []
     else do
         let linesOfFile = lines contents
         characterList <- readFileChar linesOfFile
-        putStrLn (printChar (head characterList))
-        putStrLn (printChar (last characterList))
+        return characterList
 
 readFileChar :: [String] -> IO [Character]
 readFileChar [] = return []

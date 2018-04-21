@@ -1,3 +1,5 @@
+module AddCharacter where
+
 import Character
 
 main :: IO ()

@@ -27,8 +27,6 @@ main = do
   writeFile filePath (show inputChar)
   let filePathwithEnd = filePath ++ "\n"
   appendFile "listOfFiles.txt" filePathwithEnd
-
-
 findGender :: String -> IO String
 findGender prompt = do 
   putStrLn prompt
@@ -59,7 +57,7 @@ findPhone prompt = do
     return phone
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Phone"
       findPhone prompt
 
 findGlasses :: String -> IO String
@@ -70,7 +68,7 @@ findGlasses prompt = do
     return glass
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Choice"
       findGlasses prompt
 
 findCrypto :: String -> IO String
@@ -81,5 +79,5 @@ findCrypto prompt = do
     return cry
   else 
     do 
-      putStrLn "Error: Invalid Department"
+      putStrLn "Error: Invalid Choice"
       findCrypto prompt

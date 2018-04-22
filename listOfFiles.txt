@@ -1,4 +1,3 @@
-Brian.txt
 Professor Stump.txt
 Professor Kruger.txt
 Professor Canahuate.txt

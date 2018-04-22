@@ -1,1 +1,0 @@
-Character {name = "Brian", gender = True, dept = False, phone = False, country = "USA", glasses = False, cryptocurr = True}

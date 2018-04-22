@@ -5,6 +5,7 @@ import System.Environment
 import System.IO.Unsafe
 import Control.Monad.ST.Lazy
 import Character
+import Data.Time.Clock
 
 main :: IO ()
 main = do
@@ -20,8 +21,12 @@ main = do
         putStrLn "Let's play!\n"
         
         --Person vs Person
-        let player1Character = head allCharacters -- Change!
-        let player2Character = last allCharacters -- Change!
+        randChar1Index <- getRandom (length allCharacters)
+        randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
+        let player1Character = getCharAtIndex allCharacters randChar1Index
+        let player2Character = getCharAtIndex allCharacters randChar2Index
+        putStrLn ("Player 1's Character: \n" ++ toString player1Character ++ "\n")
+        putStrLn ("Player 2's Character: \n" ++ toString player2Character ++ "\n")
         
         player1Choices <- turn 1 player1Choices
         printCharacters player1Choices
@@ -46,3 +51,22 @@ printCharacters (x : y) = do
     putStrLn (toString x ++ "\n")
     printCharacters y
 
+getRandom :: Int -> IO Int
+getRandom size = do
+    charSelect <- getCurrentTime
+    let diff = utctDayTime charSelect
+    let final = fromEnum diff
+    let smaller = final `div` 10000000000
+    let withMod = smaller `mod` size
+    return withMod
+
+getSecondRandom :: Int -> Int -> IO Int
+getSecondRandom size avoidIndex = do
+    firstTry <- getRandom size
+    if(firstTry == avoidIndex) then 
+        getSecondRandom size avoidIndex
+    else return firstTry
+
+getCharAtIndex :: [Character] -> Int -> Character
+getCharAtIndex (x : xs) num = if (num == 0) then x
+    else getCharAtIndex xs (num - 1)

@@ -1,3 +1,15 @@
-Kenneth.txt
-Olivia.txt
 Brian.txt
+Professor Stump.txt
+Professor Kruger.txt
+Professor Canahuate.txt
+Professor Beichel.txt
+Professor Maxted.txt
+Professor Oliveira.txt
+Professor Johnson.txt
+Professor Garvin.txt
+Professor Kuhl.txt
+Professor Casavant.txt
+Professor Toor.txt
+Professor Wu.txt
+Professor Myers.txt
+Professor Szecsei.txt

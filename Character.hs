@@ -20,7 +20,7 @@ toString (Character name gender dept phone country glasses crypto) = "Name: " ++
     
 genderString :: Bool -> String
 genderString True = "Male"
-genderString False = "False"
+genderString False = "Female"
 
 deptString :: Bool -> String
 deptString True = "CS"

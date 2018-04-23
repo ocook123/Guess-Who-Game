@@ -3,8 +3,8 @@ module OptimalPick where
 import Character
 
 --takes in the list of characters, finds the optimal pick, removes, returns updated list
-pickProperty :: [Character] -> [Character]
-pickProperty chars = 
+pickProperty :: [Character] -> Character -> [Character]
+pickProperty chars  findChar = 
     let genderList = makeGenderList chars in
     let deptList = makeDeptList chars in
     let phoneList = makePhoneList chars in
@@ -17,18 +17,18 @@ pickProperty chars =
     let ccTrue = abs (((length chars) `div` 2) - findTotalTrues ccList) in
     let trueList = minimum [gendTrue, depTrue, phoTrue, glasTrue, ccTrue] in
     if(gendTrue == trueList) then
-        if (gendTrue > ((length chars) `div` 2)) then removeGender chars True else removeGender chars False
+        if (gender findChar) then removeGender chars False else removeGender chars True
     else
         if(depTrue == trueList) then
-            if (depTrue > ((length chars) `div` 2)) then removeDept chars True else removeDept chars False
+            if (dept findChar) then removeDept chars False else removeDept chars True
         else
             if(phoTrue == trueList) then
-                if (phoTrue > ((length chars) `div` 2)) then removePhone chars True else removePhone chars False
+                if (phone findChar) then removePhone chars False else removePhone chars True
             else
                 if(glasTrue == trueList) then
-                    if (glasTrue > ((length chars) `div` 2)) then removeGlasses chars True else removeGlasses chars False
+                    if (glasses findChar) then removeGlasses chars False else removeGlasses chars True
                 else 
-                    if (ccTrue > ((length chars) `div` 2)) then removeCrypto chars True else removeCrypto chars False
+                    if (cryptocurr findChar) then removeCrypto chars False else removeCrypto chars True
                                     
 
 makeGenderList :: [Character] -> [Bool]

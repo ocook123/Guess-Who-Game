@@ -4,6 +4,7 @@ module PlayGame where
 import ReadCharacters
 import Character
 import Input
+import Statistics
 import System.Environment
 import System.IO.Unsafe
 import Control.Monad.ST.Lazy
@@ -44,6 +45,17 @@ beginningStart allCharacters = do
             whoWon <- play player1Character player2Character player1Choices player2Choices gameMode
             putStrLn(whoWon)
 
+            ourStats <- readStatistics
+            if(whoWon == "Player 1 wins!") then do
+                let newStats = Statistics {player1pvpWins = ((player1pvpWins ourStats) + 1), player2pvpWins = (player2pvpWins ourStats), player1pvcWins = (player1pvcWins ourStats), comppvcWins = (comppvcWins ourStats)}
+                printStatistics newStats gameMode
+                writeStatistics newStats
+            else do
+                let newStats = Statistics {player1pvpWins = (player1pvpWins ourStats), player2pvpWins = ((player2pvpWins ourStats) + 1), player1pvcWins = (player1pvcWins ourStats), comppvcWins = (comppvcWins ourStats)}
+                printStatistics newStats gameMode
+                writeStatistics newStats
+
+
             again <- playAgain
             if(again) then beginningStart allCharacters else return "All done."
             
@@ -57,6 +69,17 @@ beginningStart allCharacters = do
 
             whoWon <- play playerCharacter computerCharacter player1Choices player2Choices gameMode
             putStrLn(whoWon)
+            
+            --updates statistics
+            ourStats <- readStatistics
+            if(whoWon == "Player 1 wins!") then do
+                let newStats = Statistics {player1pvpWins = (player1pvpWins ourStats), player2pvpWins = (player2pvpWins ourStats), player1pvcWins = ((player1pvcWins ourStats) + 1), comppvcWins = (comppvcWins ourStats)}
+                printStatistics newStats gameMode
+                writeStatistics newStats
+            else do
+                let newStats = Statistics {player1pvpWins = (player1pvpWins ourStats), player2pvpWins = (player2pvpWins ourStats), player1pvcWins = (player1pvcWins ourStats), comppvcWins = ((comppvcWins ourStats) + 1)}
+                printStatistics newStats gameMode
+                writeStatistics newStats
 
             again <- playAgain
             if(again) then beginningStart allCharacters else return "All done."

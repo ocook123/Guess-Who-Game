@@ -64,11 +64,11 @@ play player1Character player2Character player1Choices player2Choices mode= do
                 return "Player 2 wins!"
             else play player1Character player2Character player1Choices player2Choices mode
         else do
-            let player2Choices = pickProperty player2Choices player1Character
+            let compChoices = pickProperty player2Choices player1Character
             printCharacters player2Choices
             if(gameIsDone player2Choices) then do
                 return "Computer wins!"
-            else play player1Character player2Character player1Choices player2Choices mode
+            else play player1Character player2Character player1Choices compChoices mode
 
 pvpOrpvc :: IO Bool
 pvpOrpvc = do

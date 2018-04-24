@@ -35,6 +35,19 @@ main = do
         printCharacters player1Choices
 
 
+play :: Character -> Character -> [Character] -> [Character] -> IO String
+play player1Character player2Character player1Choices player2Choices = do
+    player1Choices <- turn 1 player2Character player1Choices
+    printCharacters player1Choices
+    if(gameIsDone player1Choices) then do
+        return "Player 1 wins!"
+    else do
+        player2Choices <- turn 2 player1Character player2Choices
+        printCharacters player1Choices
+        if(gameIsDone player2Choices) then do
+            return "Player 2 wins!"
+        else play player1Character player2Character player1Choices player2Choices
+
 turn :: Int -> Character -> [Character] -> IO [Character]
 turn player solution c = do
     putStrLn ("Player " ++ show player ++ " Remaining Characters:")
@@ -60,6 +73,10 @@ printCharacters [] = putStrLn "\n"
 printCharacters (x : y) = do
     putStrLn (toString x ++ "\n")
     printCharacters y
+
+gameIsDone :: [Character] -> Bool
+gameIsDone (x : []) = True
+gameIsDone _ = False
 
 ----------------------------------------------------------------------------
 -- Functions used to randomly select characters at the beginning of the game

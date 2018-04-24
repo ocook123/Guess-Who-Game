@@ -3,6 +3,7 @@ module OptimalPick where
 import Character
 
 --takes in the list of characters, finds the optimal pick, removes, returns updated list
+--optimal pick - the property that is reflected most evenly in the list
 pickProperty :: [Character] -> Character -> [Character]
 pickProperty chars  findChar = 
     let genderList = makeGenderList chars in

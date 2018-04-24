@@ -8,6 +8,7 @@ import System.Environment
 import System.IO.Unsafe
 import Control.Monad.ST.Lazy
 import Data.Time.Clock
+import OptimalPick
 
 main :: IO ()
 main = do
@@ -22,31 +23,66 @@ main = do
     else do
         putStrLn "Let's play!\n"
         
+        gameMode <- pvpOrpvc
+
         --Person vs Person
-        randChar1Index <- getRandom (length allCharacters)
-        randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
-        let player1Character = getCharAtIndex allCharacters randChar1Index
-        let player2Character = getCharAtIndex allCharacters randChar2Index
-        
-        putStrLn ("Player 1's Character: \n" ++ toString player1Character ++ "\n")
-        putStrLn ("Player 2's Character: \n" ++ toString player2Character ++ "\n")
-        
-        player1Choices <- turn 1 player2Character player1Choices 
-        printCharacters player1Choices
+        if(gameMode) then do
+            randChar1Index <- getRandom (length allCharacters)
+            randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
+            let player1Character = getCharAtIndex allCharacters randChar1Index
+            let player2Character = getCharAtIndex allCharacters randChar2Index
+            
+            putStrLn ("Player 1's Character: \n" ++ toString player1Character ++ "\n")
+            putStrLn ("Player 2's Character: \n" ++ toString player2Character ++ "\n")
+            
+            whoWon <- play player1Character player2Character player1Choices player2Choices gameMode
+            putStrLn(whoWon)
+        else do
+            randChar1Index <- getRandom (length allCharacters)
+            randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
+            let playerCharacter = getCharAtIndex allCharacters randChar1Index
+            let computerCharacter = getCharAtIndex allCharacters randChar2Index
+
+            putStrLn ("Player's Character: \n" ++ toString playerCharacter ++ "\n")
+
+            whoWon <- play playerCharacter computerCharacter player1Choices player2Choices gameMode
+            putStrLn(whoWon)
 
 
-play :: Character -> Character -> [Character] -> [Character] -> IO String
-play player1Character player2Character player1Choices player2Choices = do
+--mode: pvp = True pvc = False
+play :: Character -> Character -> [Character] -> [Character] -> Bool -> IO String
+play player1Character player2Character player1Choices player2Choices mode= do
     player1Choices <- turn 1 player2Character player1Choices
     printCharacters player1Choices
     if(gameIsDone player1Choices) then do
         return "Player 1 wins!"
     else do
-        player2Choices <- turn 2 player1Character player2Choices
-        printCharacters player1Choices
-        if(gameIsDone player2Choices) then do
-            return "Player 2 wins!"
-        else play player1Character player2Character player1Choices player2Choices
+        if(mode) then do
+            player2Choices <- turn 2 player1Character player2Choices
+            printCharacters player2Choices
+            if(gameIsDone player2Choices) then do
+                return "Player 2 wins!"
+            else play player1Character player2Character player1Choices player2Choices mode
+        else do
+            let player2Choices = pickProperty player2Choices player1Character
+            printCharacters player2Choices
+            if(gameIsDone player2Choices) then do
+                return "Computer wins!"
+            else play player1Character player2Character player1Choices player2Choices mode
+
+pvpOrpvc :: IO Bool
+pvpOrpvc = do
+    putStrLn "Select a Game Mode:"
+    putStrLn "0: Player vs. Player"
+    putStrLn "1: Player vs. Computer"
+    mode <- getLine
+    let modeVal = read mode :: Int
+    if(modeVal == 0) then 
+        return True
+    else 
+        if(modeVal == 1) then
+            return False
+        else pvpOrpvc
 
 turn :: Int -> Character -> [Character] -> IO [Character]
 turn player solution c = do

@@ -153,7 +153,7 @@ handleQuestion x solution c = case x of
     6 -> do
         cr <- findCrypto "Enter 'Y' if you think the character owns cryptocurrency. Enter 'N' otherwise:" 
         let b = (cryptocurr solution)
-        let output = if b then "does" else "does not"
+        let output = if b then "does not" else "does"
         putStrLn ("\nThe character " ++ output ++ " own cryptocurrency\n")
         let newCharacters = removeCrypto c (not b)
         return newCharacters

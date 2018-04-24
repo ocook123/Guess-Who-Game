@@ -15,11 +15,17 @@ main = do
     let file = "listOfFiles.txt"
     allCharacters <- readCharacters file
     
+    endString <- beginningStart allCharacters
+    putStrLn (endString)
+
+beginningStart :: [Character] -> IO String
+beginningStart allCharacters = do
     let player1Choices = allCharacters
     let player2Choices = allCharacters
 
-    if length allCharacters == 0 then
+    if length allCharacters == 0 then do
         putStrLn "Error: No characters found!"
+        return "All done."
     else do
         putStrLn "Let's play!\n"
         
@@ -37,6 +43,10 @@ main = do
             
             whoWon <- play player1Character player2Character player1Choices player2Choices gameMode
             putStrLn(whoWon)
+
+            again <- playAgain
+            if(again) then beginningStart allCharacters else return "All done."
+            
         else do
             randChar1Index <- getRandom (length allCharacters)
             randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
@@ -48,6 +58,20 @@ main = do
             whoWon <- play playerCharacter computerCharacter player1Choices player2Choices gameMode
             putStrLn(whoWon)
 
+            again <- playAgain
+            if(again) then beginningStart allCharacters else return "All done."
+
+
+playAgain:: IO Bool
+playAgain = do
+    putStrLn("Play Again? Y or N")
+    yOrn <- getLine
+    if(yOrn == "Y") then do
+        return True
+    else do
+        if(yOrn == "N") then do
+            return False
+        else playAgain
 
 --mode: pvp = True pvc = False
 play :: Character -> Character -> [Character] -> [Character] -> Bool -> IO String

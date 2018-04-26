@@ -1,12 +1,15 @@
 module Statistics where
-    
--- Structure - Gender, Dept, Phone Pref, Country, Wears Glasses, Holds Crypto
--- Gender (M = T, F = F), Dept (CS = T, ECE = F), Phone (Android = T, iPhone = F)
+
+
 data Statistics = Statistics { player1pvpWins :: Int , player2pvpWins :: Int , player1pvcWins :: Int , comppvcWins :: Int }
     deriving (Eq, Show,  Read)
 
 
-
+----------------------------------------------------------------------------
+-- The statistcs are stored in a text file and read from and updated with 
+-- each game. There are differet statisitics for Player vs. Player and
+-- Player vs. Computer
+----------------------------------------------------------------------------
 readStatistics :: IO Statistics
 readStatistics = do
     stats <- readFile "statistics.txt"
@@ -20,7 +23,7 @@ writeStatistics stats = do
 --Bool is current mode
 printStatistics :: Statistics -> Bool -> IO()
 printStatistics stats mode = do
-    --pvp
+    --Player vs Player
     if(mode) then do
         let totalGames = (player1pvpWins stats) + (player2pvpWins stats)
         let p1perc = ((player1pvpWins stats) * 100) `div` totalGames
@@ -28,7 +31,8 @@ printStatistics stats mode = do
         putStrLn("Total Games: " ++ (show totalGames))
         putStrLn("Player 1 has won " ++ (show (player1pvpWins stats)) ++ " games (" ++ (show p1perc) ++ "% win rate)")
         putStrLn("Player 2 has won " ++ (show (player2pvpWins stats)) ++ " games (" ++ (show p2perc) ++ "% win rate)")
-    else do
+    --Player vs Computer
+        else do
         let totalGames = (player1pvcWins stats) + (comppvcWins stats)
         let p1perc = ((player1pvcWins stats)* 100)`div`totalGames
         let compPerc = ((comppvcWins stats) * 100)`div`totalGames

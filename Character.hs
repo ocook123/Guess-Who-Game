@@ -89,11 +89,7 @@ removeCrypto (x : y) b = if (cryptocurr x) == b then
     (removeCrypto y b) else
     x : removeCrypto y b
 
-{-instance Read Character where
-    readsPrec _ value =  (Character a b c d e f g) = "(" ++ a ++ "," ++ read b ++ "," ++ read c ++ "," ++ read d ++ "," ++ e ++ "," ++ read f ++ "," ++ read g ++ ")"-}
 
-
-    
 -- Int: question number entered 
 -- Character: The character this player is trying to guess
 -- [Character]: Remaining characters

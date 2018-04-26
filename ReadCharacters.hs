@@ -5,6 +5,10 @@ import System.IO.Unsafe
 import Control.Monad.ST.Lazy
 import Character
 
+----------------------------------------------------------------------------
+-- Functions to read in the file that contains a list of file paths and from
+-- there reads in from each file named and returns a list of Characters
+----------------------------------------------------------------------------
 readCharacters :: String -> IO [Character]
 readCharacters file = do
     contents <- readFile file
@@ -15,6 +19,7 @@ readCharacters file = do
         let linesOfFile = lines contents
         characterList <- readFileChar linesOfFile
         return characterList
+
 
 readFileChar :: [String] -> IO [Character]
 readFileChar [] = return []

@@ -59,6 +59,7 @@ beginningStart allCharacters = do
             again <- playAgain
             if(again) then beginningStart allCharacters else return "All done."
             
+        --Player vs. Computer
         else do
             randChar1Index <- getRandom (length allCharacters)
             randChar2Index <- getSecondRandom (length allCharacters) randChar1Index
@@ -117,6 +118,7 @@ play player1Character player2Character player1Choices player2Choices mode= do
                 return "Computer wins!"
             else play player1Character player2Character player1Choices compChoices mode
 
+-- Allows the Player/Players to choose the game mode
 pvpOrpvc :: IO Bool
 pvpOrpvc = do
     putStrLn "Select a Game Mode:"

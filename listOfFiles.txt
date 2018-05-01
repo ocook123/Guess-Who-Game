@@ -1,14 +1,14 @@
-Professor Stump.txt
-Professor Kruger.txt
-Professor Canahuate.txt
-Professor Beichel.txt
-Professor Maxted.txt
-Professor Oliveira.txt
-Professor Johnson.txt
-Professor Garvin.txt
-Professor Kuhl.txt
-Professor Casavant.txt
-Professor Toor.txt
-Professor Wu.txt
-Professor Myers.txt
-Professor Szecsei.txt
+Stump.txt
+Kruger.txt
+Canahuate.txt
+Beichel.txt
+Maxted.txt
+Oliveira.txt
+Johnson.txt
+Garvin.txt
+Kuhl.txt
+Casavant.txt
+Toor.txt
+Wu.txt
+Myers.txt
+Szecsei.txt

@@ -113,8 +113,11 @@ play player1Character player2Character player1Choices player2Choices mode= do
             else play player1Character player2Character player1Choices player2Choices mode
         else do
             let compChoices = pickProperty player2Choices player1Character
-            printCharacters player2Choices
-            if(gameIsDone player2Choices) then do
+            putStrLn "\n\n****************************************************"
+            putStrLn "The computer has the following characters:"
+            putStrLn "****************************************************\n"
+            printCharacters compChoices
+            if(gameIsDone compChoices) then do
                 return "Computer wins!"
             else play player1Character player2Character player1Choices compChoices mode
 
@@ -135,7 +138,11 @@ pvpOrpvc = do
 
 turn :: Int -> Character -> [Character] -> IO [Character]
 turn player solution c = do
-    putStrLn ("Player " ++ show player ++ " Remaining Characters:")
+    putStrLn "\n\n****************************************************"
+    putStrLn ("Player " ++ show player ++ "'s Turn!")
+    putStrLn "****************************************************\n"
+
+    putStrLn "Remaining Characters To Guess:"
     printCharacters c
 
     putStrLn "Select a question or make a guess:"

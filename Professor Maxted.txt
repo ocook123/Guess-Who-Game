@@ -1,1 +1,0 @@
-Character {name = "Professor Maxted", gender = True, dept = False, phone = True, country = "USA", glasses = False, cryptocurr = False}

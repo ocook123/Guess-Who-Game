@@ -1,1 +1,0 @@
-Character {name = "Professor Kruger", gender = True, dept = False, phone = False, country = "South Africa", glasses = True, cryptocurr = False}

@@ -1,1 +1,0 @@
-Character {name = "Professor Canahuate", gender = False, dept = False, phone = False, country = "Dominican Republic", glasses = False, cryptocurr = False}

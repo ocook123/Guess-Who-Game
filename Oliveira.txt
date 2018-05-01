@@ -1,0 +1,1 @@
+Character {name = "Oliveira", gender = False, dept = True, phone = False, country = "USA", glasses = True, cryptocurr = False}

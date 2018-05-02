@@ -1,3 +1,16 @@
-We have completed our project. We have implemented adding a character to the game, playing the guess who game in player vs. player mode as well as player vs. computer. 
-When a character is added, a file is created with all the character's characteristics and the path to that file is added to a master list of the paths to all the characters. Using deriving Read and deriving Show, we were able to store and read in the Character (which is a data type) without parsing. Then we implemented all the logic and functionality for the guess who game in which we allow users to guess characteristics and eliminate the characters that don't have the characteristics the same as the hidden character. The player will win if they whittle down the characters to the last one or guess the name correctly. In computer vs. player mode, the computer calculates the most optimal choice and eliminates based on which characteristic is most evenly distributed so no matter which characteristic is eliminated, it will be the most successful either way. 
-We choose the characters for the players randomly from the list based on a number generated using the current time. We also use a Statistic data type to keep track of the statistics for each mode separately. 
+We have completed our project's functionality. We have successfully implemented adding a character to the game as well as the actual Guess Who game itself.
+When a character is added, a text file is created with all the character's attributes and the file name is added to a master list of all characters.
+Using deriving Read and deriving Show, we were able to store and read in the the attributes into a datatype we created named Character.
+
+Next, we implemented all the logic and functionality for the Guess Who game. The game allows users to guess characteristics and eliminate the characters 
+that don't have the characteristics that are the same as the hidden character. The first person to eliminate all but the hidden character wins the game. 
+The game supports two modes: player vs. player and player vs. computer. In computer vs. player mode, the computer calculates the optimal question to ask
+based on which characteristic is most evenly distributed among all characters. Therefore, no matter which characteristic is eliminated, the computer is able
+to eliminate close to half of the characters in each turn.
+
+In addition to this, the hidden characters are chosen randomly by using the current time. This allows each game to be unique. Furthermore, we implemented
+the ability to view statistics including win rate for each player and the total number of games played. Each game mode (person vs. person, person vs. computer)
+has separate statistics maintained. 
+
+The most difficult part of what we've done is learning how to read and write to or from files in Haskell.
+Remaining work that we have involves user input validation.

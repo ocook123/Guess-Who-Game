@@ -1,1 +1,1 @@
-Statistics {player1pvpWins = 2, player2pvpWins = 1, player1pvcWins = 2, comppvcWins = 1}
+Statistics {player1pvpWins = 3, player2pvpWins = 3, player1pvcWins = 3, comppvcWins = 1}

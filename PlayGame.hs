@@ -10,6 +10,7 @@ import System.IO.Unsafe
 import Control.Monad.ST.Lazy
 import Data.Time.Clock
 import OptimalPick
+import Text.Read
 
 main :: IO ()
 main = do
@@ -127,8 +128,7 @@ pvpOrpvc = do
     putStrLn "Select a Game Mode:"
     putStrLn "0: Player vs. Player"
     putStrLn "1: Player vs. Computer"
-    mode <- getLine
-    let modeVal = read mode :: Int
+    modeVal <- checkForInt
     if(modeVal == 0) then 
         return True
     else 
@@ -154,11 +154,17 @@ turn player solution c = do
     putStrLn "5: Ask about glasses"
     putStrLn "6: Ask about cryptocurrency"
 
-    input <- getLine
-    let n = read input :: Int
+    n <- checkForInt
     newCharacters <- handleQuestion n solution c
     return newCharacters
 
+--Checks that the input is an integer
+checkForInt :: IO Int
+checkForInt = do
+    input <- getLine
+    case readMaybe input of
+        Just x -> return x
+        Nothing -> putStrLn "Please enter a valid input" >> checkForInt
 
 printCharacters ::[Character] -> IO ()
 printCharacters [] = putStrLn "\n"
